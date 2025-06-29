@@ -1,0 +1,19 @@
+{% extends 'app_goat/components/base.html' %}
+{% load static %}
+{% block site_title %} เกี่ยวกับเรา {% endblock %}
+
+ {% block content %} 
+ <div>
+    <h1> Hello 9Artt</h1>
+    <h2>This is your about us</h2>
+ </div>
+
+ <section>
+   <h4>
+      Hello I am MR.Artt
+   </h4>
+   <div>
+      <img src="{% static 'app_goat/9artt.jpg' %}" >
+   </div>
+ </section>
+ {% endblock %}

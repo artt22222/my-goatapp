@@ -1,0 +1,69 @@
+{% extends 'app_goat/components/base.html' %}
+{% load static %}
+
+{% block site_title %} หน้าแรก {% endblock %}
+{% block content %}
+<section class="hero-bg  py-5">
+  <div class="container  ">
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-5">
+
+      <!-- ✅ ข้อความ: อยู่ซ้ายบน Desktop, อยู่บน Mobile -->
+      <div class="text-white text-center text-lg-start ps-5 ">
+        <h1 class="fw-bold display-5 mb-4">
+          ดูแลสุขภาพแพะอย่าง<br>
+          มั่นใจ ด้วยระบบ<br>
+          วินิจฉัยอัจฉริยะ
+        </h1>
+        <p class="lead mb-3">
+          เราเชื่อว่าการดูแลสัตว์เลี้ยงของคุณด้วยความใส่ใจ<br>
+          คือกุญแจสำคัญสู่สุขภาพที่ดีของฝูง
+        </p>
+        <a href="#" class="btn btn-warning btn-lg fw-bold px-4 rounded-pill">
+          เริ่มเลย <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- ✅ รูปภาพ: อยู่ขวาเมื่อจอใหญ่, อยู่ล่างเมื่อจอเล็ก -->
+      <div class="d-flex gap-3 justify-content-end me-lg-0">
+        <img src="{% static 'app_goat/goat_1.jpg' %}" class="goat-image active" id="goat1" alt="goat1">
+        <img src="{% static 'app_goat/goat_2.jpg' %}" class="goat-image" id="goat2" alt="goat2">
+        <img src="{% static 'app_goat/goat_3.jpg' %}" class="goat-image" id="goat3" alt="goat3">
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-5 pt-5"> 
+      <div class="d-flex gap-3 justify-content-start me-lg-0">
+        <img src="{% static 'app_goat/goat_1.jpg' %}" class="goat-image " id="goat1" alt="goat1">
+        <img src="{% static 'app_goat/goat_2.jpg' %}" class="goat-image" id="goat2" alt="goat2">
+        <img src="{% static 'app_goat/goat_3.jpg' %}" class="goat-image active" id="goat3" alt="goat3">
+      </div>
+
+      
+      <div class="text-white text-center text-lg-start ps-5 ">
+       
+        <p class="lead mb-3">
+          ระบบของเราใช้เทคโนโลยี Machine Learning ในการประมวลผลข้อมูลจากอาการของแพะ 
+          เพื่อช่วยประเมินแนวโน้มของโรคต่าง ๆ อย่างแม่นยำ
+          เหมาะสำหรับทั้งฟาร์มขนาดเล็กและใหญ่ เพื่อให้คุณสามารถตัดสินใจดูแลสัตว์เลี้ยงได้อย่างถูกต้องและรวดเร็ว<br>
+          
+        </p>
+        <a href="{% url 'about' %}" class="btn btn-warning btn-lg fw-bold px-4 rounded-pill  ">
+          เรียนรู้เพิ่มเติม <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+
+     
+
+      
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+</section>
+{% endblock %}

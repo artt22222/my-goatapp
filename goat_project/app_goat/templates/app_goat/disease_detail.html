@@ -1,0 +1,43 @@
+{% extends 'app_goat/components/base.html' %}
+
+{% block site_title %}รายละเอียดโรค{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <img src="{{  disease.image.url }}" 
+         class="img-fluid rounded shadow-sm " 
+         style="max-height: 400px; object-fit: cover;" 
+         alt="{{ disease.title }}">
+  </div>
+
+  <h2 class="fw-bold text-success text-center mb-5 ">{{ disease.title }}</h2>
+
+  <div class="mb-3">
+    <p>
+      <span class="badge bg-success fs-6 px-3 py-2 mb-2">สาเหตุ</span><br>
+      {{ disease.cause }}
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <p>
+      <span class="badge bg-success fs-6 px-3 py-2 mb-2">อาการ</span><br>
+      {{ disease.sympton }}
+    </p>
+  </div>
+
+  <div class="mb-3">
+    <p>
+      <span class="badge bg-success fs-6 px-3 py-2 mb-2">การรักษา</span><br>
+      {{ disease.treatment }}
+    </p>
+  </div>
+
+  <div class="text-end mt-4">
+    <a href="{% url 'disease_list' %}" class="btn btn-outline-success">
+      ← กลับไปยังรายชื่อโรค
+    </a>
+  </div>
+</div>
+{% endblock %}

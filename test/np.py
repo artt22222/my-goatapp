@@ -1,23 +1,18 @@
 import pandas as pd 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import cross_val_predict, GridSearchCV, StratifiedKFold
-from sklearn.metrics import (
-    confusion_matrix, accuracy_score, precision_score, f1_score, recall_score,classification_report
-)
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import confusion_matrix
-import joblib as jb
-import numpy as np
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import cross_val_predict, StratifiedKFold
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
+from sklearn.preprocessing import LabelEncoder 
 
-data = pd.read_csv("test/datadisease.csv")
-data.fillna(0, inplace=True)
+data=  pd.read_csv("test/datadisease.csv")
+data.fillna(0, inplace= True)
 
-x = data.drop(['disease'], axis=1).values
+x = data.drop(['disease'], axis=1)
+y =data['disease']
 le = LabelEncoder()
-y = data['disease']
 y_encode = le.fit_transform(y)
 
-model = RandomForestClassifier(n_estimators=300, random_state=42, class_weight= None, max_depth= None, min_samples_leaf=1, min_samples_split= 4)
+model = MultinomialNB(alpha=0.1, fit_prior=False)
 
 cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)
@@ -51,7 +46,6 @@ for i, class_name in enumerate(class_names):
     print(f"  True Negative  (TN): {TN}")
 
 
-model.fit(x, y_encode)
-
-# jb.dump(model, 'test/RF_model.pkl')
-# jb.dump(le, 'test/label_encoder.pkl')
+# model.fit(x, y_encode)
+# # jb.dump(model, 'test/RF_model.pkl')
+# # jb.dump(le, 'test/label_encoder.pkl')

@@ -1,0 +1,11 @@
+{% extends 'app_goat/components/base.html' %}
+{% block site_title %} ผลการวินิจฉัย {% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-white">
+  <h2>ผลการวินิจฉัย</h2>
+  <p>โรคที่คาดว่าเป็น: <strong>{{ prediction }}</strong></p>
+  <p>ความมั่นใจของระบบ: <strong>{{ probability }}%</strong></p>
+  <a href="{% url 'diagnosis_form' %}" class="btn btn-secondary mt-3">← กลับไปกรอกอาการใหม่</a>
+</div>
+{% endblock %}

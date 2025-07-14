@@ -1,0 +1,362 @@
+
+
+/* About Container */
+.about-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+}
+
+/* Background Decorations */
+.bg-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(116, 185, 255, 0.1), rgba(162, 155, 254, 0.1));
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: -100px;
+    background: linear-gradient(135deg, rgba(116, 185, 255, 0.08), rgba(162, 155, 254, 0.08));
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    top: 100px;
+    right: -80px;
+    background: linear-gradient(135deg, rgba(255, 195, 113, 0.1), rgba(255, 171, 145, 0.1));
+}
+
+.circle-3 {
+    width: 150px;
+    height: 150px;
+    bottom: -50px;
+    left: 200px;
+    background: linear-gradient(135deg, rgba(167, 112, 239, 0.1), rgba(207, 159, 255, 0.1));
+}
+
+.dots-pattern {
+    position: absolute;
+    top: 50%;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background-image: radial-gradient(circle, rgba(116, 185, 255, 0.3) 2px, transparent 2px);
+    background-size: 15px 15px;
+    transform: translateY(-50%);
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.text-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.about-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.about-subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.about-text {
+    color: #7f8c8d;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Image Gallery */
+.image-gallery {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+}
+
+.image-bottom {
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    margin-top: 20px;
+    
+    /* ใช้ Flexbox เพื่อจัดกลาง */
+    display: flex;
+    justify-content: center;  /* จัดกลางในแนวนอน */
+    align-items: center;      /* จัดกลางในแนวตั้ง */
+}
+
+.image-bottom img {
+    max-width: 100%; /* ให้รูปภาพไม่เกินขนาดของ container */
+    height: auto;
+    border-radius: 12px;
+}
+
+.image-card {
+    position: absolute;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.image-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-1 {
+    width: 200px;
+    height: 250px;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.image-2 {
+    width: 150px;
+    height: 200px;
+    top: 80px;
+    right: 50px;
+    z-index: 2;
+}
+
+.image-3 {
+    width: 180px;
+    height: 220px;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* Navigation Dots */
+.nav-dots {
+    position: absolute;
+    top: 20px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 4;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(116, 185, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #74b9ff;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: #74b9ff;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .image-gallery {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .image-1 {
+        width: 180px;
+        height: 220px;
+    }
+    
+    .image-2 {
+        width: 130px;
+        height: 170px;
+    }
+    
+    .image-3 {
+        width: 160px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+    }
+    
+    .nav-item {
+        white-space: nowrap;
+        min-width: fit-content;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .about-container {
+        padding: 40px 25px;
+    }
+    
+    .about-title {
+        font-size: 36px;
+    }
+    
+    .about-subtitle {
+        font-size: 20px;
+    }
+    
+    .image-gallery {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .image-1 {
+        width: 140px;
+        height: 180px;
+    }
+    
+    .image-2 {
+        width: 110px;
+        height: 140px;
+    }
+    
+    .image-3 {
+        width: 130px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container {
+        padding: 30px 20px;
+    }
+    
+    .about-title {
+        font-size: 28px;
+    }
+    
+    .about-subtitle {
+        font-size: 18px;
+    }
+    
+    .about-text {
+        font-size: 14px;
+    }
+    
+    .image-gallery {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .content-wrapper {
+        gap: 30px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 0.8s ease forwards;
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

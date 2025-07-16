@@ -7,75 +7,197 @@
 {% endblock %}
 
 {% block content %}
- <div class="main-content">
-        <div class="header">
-            <h1>วินิจฉัยโรคของแพะ</h1>
+ 
+
+     <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>วินิจฉัยโรคของแพะ</h1>
+                <p>เลือกอาการที่พบในแพะเพื่อทำการวินิจฉัยโรค</p>
+            </div>
+
+            <form action="/diagnosis" method="POST">
+                <div class="symptoms-grid">
+                    <!-- พฤติกรรม & ทั่วไป -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">1</div>
+                            <div class="card-title">พฤติกรรม & อาการทั่วไป</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ซึม" id="s1">
+                                <label for="s1">ซึม</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="เบื่ออาหาร" id="s2">
+                                <label for="s2">เบื่ออาหาร</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="มีไข้" id="s3">
+                                <label for="s3">มีไข้</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ผอมลง" id="s4">
+                                <label for="s4">ผอมลง</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="นอนนานผิดปกติ" id="s5">
+                                <label for="s5">นอนนานผิดปกติ</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ไม่มีแรง" id="s6">
+                                <label for="s6">ไม่มีแรง</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ระบบหายใจ -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">2</div>
+                            <div class="card-title">ระบบหายใจ</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ไอ" id="r1">
+                                <label for="r1">ไอ</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="หายใจลำบาก" id="r2">
+                                <label for="r2">หายใจลำบาก</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="น้ำมูกไหล" id="r3">
+                                <label for="r3">น้ำมูกไหล</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="จาม" id="r4">
+                                <label for="r4">จาม</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="หายใจเร็ว" id="r5">
+                                <label for="r5">หายใจเร็ว</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ระบบย่อยอาหาร -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">3</div>
+                            <div class="card-title">ระบบย่อยอาหาร</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ท้องเสีย" id="d1">
+                                <label for="d1">ท้องเสีย</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ท้องผูก" id="d2">
+                                <label for="d2">ท้องผูก</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="อาเจียน" id="d3">
+                                <label for="d3">อาเจียน</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ท้องโต" id="d4">
+                                <label for="d4">ท้องโต</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ไม่เคี้ยวเอื้อง" id="d5">
+                                <label for="d5">ไม่เคี้ยวเอื้อง</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ระบบประสาท -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">4</div>
+                            <div class="card-title">ระบบประสาท</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ชัก" id="n1">
+                                <label for="n1">ชัก</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="เดินโซเซ" id="n2">
+                                <label for="n2">เดินโซเซ</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ขาอ่อนแรง" id="n3">
+                                <label for="n3">ขาอ่อนแรง</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="หมุนเวียน" id="n4">
+                                <label for="n4">หมุนเวียน</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ผิวหนัง & ขน -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">5</div>
+                            <div class="card-title">ผิวหนัง & ขน</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ผิวหนังอักเสบ" id="sk1">
+                                <label for="sk1">ผิวหนังอักเสบ</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ขนร่วง" id="sk2">
+                                <label for="sk2">ขนร่วง</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="คัน" id="sk3">
+                                <label for="sk3">คัน</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="แผลเปิด" id="sk4">
+                                <label for="sk4">แผลเปิด</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ระบบสืบพันธุ์ -->
+                    <div class="symptom-card">
+                        <div class="card-header">
+                            <div class="card-icon">6</div>
+                            <div class="card-title">ระบบสืบพันธุ์</div>
+                        </div>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="แท้งลูก" id="rep1">
+                                <label for="rep1">แท้งลูก</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ตกรกผิดปกติ" id="rep2">
+                                <label for="rep2">ตกรกผิดปกติ</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="เต้านมบวม" id="rep3">
+                                <label for="rep3">เต้านมบวม</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="symptoms[]" value="ไม่เข้าสัด" id="rep4">
+                                <label for="rep4">ไม่เข้าสัด</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <a href="{% url 'result' %}" type="submit" class="submit-btn">
+                        🔍 ส่งข้อมูลวินิจฉัย
+                    </a>
+                </div>
+            </form>
         </div>
-
-        <form action="/diagnosis" method="POST">
-            <div class="symptoms-grid">
-                <!-- ตัวอย่างกลุ่มอาการ -->
-                <div class="symptom-card">
-                    <div class="card-header">
-                        <div class="card-icon">1</div>
-                        <div class="card-title">พฤติกรรม & ทั่วไป</div>
-                    </div>
-                    <div class="checkbox-group">
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="ซึม" id="s1">
-                            <label for="s1">ซึม</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="เบื่ออาหาร" id="s2">
-                            <label for="s2">เบื่ออาหาร</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="มีไข้" id="s3">
-                            <label for="s3">มีไข้</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="ผอมลง" id="s4">
-                            <label for="s4">ผอมลง</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="นอนนานผิดปกติ" id="s5">
-                            <label for="s5">นอนนานผิดปกติ</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- เพิ่มหมวดอื่น ๆ แบบเดียวกัน -->
-                <div class="symptom-card">
-                    <div class="card-header">
-                        <div class="card-icon">2</div>
-                        <div class="card-title">ระบบหายใจ</div>
-                    </div>
-                    <div class="checkbox-group">
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="ไอ" id="r1">
-                            <label for="r1">ไอ</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="หายใจลำบาก" id="r2">
-                            <label for="r2">หายใจลำบาก</label>
-                        </div>
-                        <div class="checkbox-option">
-                            <input type="checkbox" name="symptoms[]" value="น้ำมูกไหล" id="r3">
-                            <label for="r3">น้ำมูกไหล</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- เพิ่ม card สำหรับระบบอื่น ๆ ตามต้องการ -->
-
-            </div>
-
-            <div style="text-align: center; margin-top: 30px;">
-                <button type="submit" style="padding: 10px 30px; background: #ffd54f; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">
-                    ส่งข้อมูลวินิจฉัย
-                </button>
-            </div>
-        </form>
     </div>
 
 {% endblock %}

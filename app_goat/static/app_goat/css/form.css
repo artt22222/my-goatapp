@@ -1,196 +1,163 @@
- /* styles.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  .symptoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+  }
 
-body {
-     font-family: 'Kanit', sans-serif;
-   background: linear-gradient(135deg, #90caf9 0%, #bbdefb 100%);
-    min-height: 100vh;
-    color: #333;
-}
+  .symptom-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 
-.container {
-    display: flex;
-    min-height: 100vh;
-}
+  .symptom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
 
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    position: relative;
-}
+  .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+  }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #2c3e50;
-    font-size: 24px;
-    font-weight: bold;
-}
+  .card-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
+  }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    margin-top: -30px;
-}
+  .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+  }
 
-.nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+  .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 5px;
+  }
 
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    color: #2c3e50;
-    text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    font-size: 20px;
-}
+  .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+  }
 
-.nav-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(5px);
-}
+  .checkbox-option:hover {
+      background: rgba(66, 165, 245, 0.1);
+  }
 
-.nav-item.active {
-    background: rgba(255, 255, 255, 0.2);
-    font-weight: 600;
-}
+  .checkbox-option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #42a5f5;
+      border-radius: 10px;
+      cursor: pointer;
+  }
 
-        .main-content {
-            flex: 1;
-            padding: 40px;
-        }
+  .checkbox-option label {
+      font-size: 15px;
+      color: #333;
+      cursor: pointer;
+      flex: 1;
+  }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+  /* Scrollbar */
+  .checkbox-group::-webkit-scrollbar {
+      width: 6px;
+  }
 
-        .header h1 {
-            color: white;
-            font-size: 32px;
-        }
+  .checkbox-group::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+      border-radius: 3px;
+  }
 
-        .symptoms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  .checkbox-group::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 3px;
+  }
 
-        .symptom-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
+  .submit-section {
+      text-align: center;
+      margin-top: 40px;
+  }
 
-        .symptom-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
+  .submit-btn {
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+      text-decoration: none;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.4);
+      color: #333;
+  }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
-        }
+  .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 213, 79, 0.6);
+  }
 
-        .card-icon {
-            width: 24px;
-            height: 24px;
-            background: #26a69a;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-        }
+  .submit-btn:active {
+      transform: translateY(0);
+  }
 
-        .card-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
+  @media (max-width: 768px) {
+      .container {
+          flex-direction: column;
+      }
 
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 160px;
-            overflow-y: auto;
-        }
+      .sidebar {
+          width: 100%;
+          flex-direction: row;
+          overflow-x: auto;
+          padding: 15px;
+          border-radius: 0;
+      }
 
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+      .nav-menu {
+          flex-direction: row;
+          gap: 10px;
+      }
 
-        .checkbox-option input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #26a69a;
-            cursor: pointer;
-        }
+      .main-content {
+          padding: 20px;
+      }
 
-        .checkbox-option label {
-            font-size: 14px;
-            color: #333;
-            cursor: pointer;
-        }
+      .symptoms-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+      }
 
-        /* Scrollbar */
-        .checkbox-group::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .checkbox-group::-webkit-scrollbar-thumb {
-            background-color: #26a69a;
-            border-radius: 3px;
-        }
-
-        .checkbox-group::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                flex-direction: row;
-                overflow-x: auto;
-                padding: 10px;
-            }
-            .main-content {
-                padding: 20px;
-            }
-            .symptoms-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      .header h1 {
+          font-size: 28px;
+      }
+  }

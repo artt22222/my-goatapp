@@ -12,7 +12,7 @@ y =data['disease']
 le = LabelEncoder()
 y_encode = le.fit_transform(y)
 
-model = MultinomialNB(alpha=0.1, fit_prior=False)
+model = MultinomialNB(alpha=2.0, fit_prior=False)
 
 cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)

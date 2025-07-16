@@ -17,7 +17,7 @@ le = LabelEncoder()
 y = data['disease']
 y_encode = le.fit_transform(y)
 
-model = RandomForestClassifier(n_estimators=300, random_state=42, class_weight= None, max_depth= None, min_samples_leaf=1, min_samples_split= 4)
+model = RandomForestClassifier(n_estimators=300, random_state=42, class_weight= 'balanced', max_depth= 20, min_samples_leaf=1, min_samples_split= 4)
 
 cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)

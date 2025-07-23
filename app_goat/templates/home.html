@@ -1,0 +1,105 @@
+{% extends 'app_goat/components/base.html' %}
+{% load humanize %}
+{% load static %}
+{% block site_title %}DGOAT - ระบบวิจัยโรคของแพะ {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app_goat/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Main Content -->
+<div class="main-content">
+    <header class="header">
+        <h1>ระบบสนับสนุนการตัดสินใจการวินิจฉัยโรคของแพะ</h1>
+    </header>
+
+    <div class="content-grid">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>ดูแลสุขภาพแพะอย่างมั่นใจ ด้วยระบบวินิจฉัย โรคแพะ</h2>
+                <h2>อัจฉริยะ</h2>
+                <a href="{% url 'form'%}" class="cta-button">เริ่มวินิจฉัย</a>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'app_goat/images/g-home-1.png' %}" alt="people-farm">
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="{% static 'app_goat/images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" data-value="{{stats.total_goats}}" data-suffix=" ตัว">{{ stats.total_goats|intcomma }} ตัว</div>
+                    <div class="stat-label">ประชากรแพะประเทศไทย</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="{% static 'app_goat/images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number data" data-value="{{ stats.total_farmers }}" data-suffix=" ราย">{{ stats.total_farmers|intcomma }} ราย</div>
+                    <div class="stat-label">เกษตรกรผู้เลี้ยงแพะในประเทศไทย</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="{% static 'app_goat/images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" data-value="{{ stats.goats_south }}" data-suffix=" ตัว">{{ stats.goats_south|intcomma }} ตัว</div>
+                    <div class="stat-label">ประชากรแพะในสามจังหวัดชายแดนใต้</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <img src="{% static 'app_goat/images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number" data-value="{{ stats.farmers_south }}" data-suffix=" ราย">{{ stats.farmers_south|intcomma }} ตัว</div>
+                    <div class="stat-label">เกษตรกรผู้เลี้ยงแพะในสามจังหวัดชายแดนใต้</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Cards -->
+        <div class="research-section">
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="{% static 'app_goat/images/goat_2.jpg' %}" alt="Goat Research" />
+                </div>
+                <div class="research-content">
+                    <h3>เพราะความใส่ใจคือ หนึ่งในจุดมุ่งหมายของเรา</h3>
+                    <p>เราใส่ใจการดูแลสุขภาพของแพะอย่างต่อเนื่อง ทั้งด้านโภชนาการ การจัดการโรค และสภาพแวดล้อม เพื่อคุณภาพชีวิตที่ดีของสัตว์เลี้ยงของคุณ</p>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-image">
+                    <img src="{% static 'app_goat/images/ml.jpg' %}" alt="Machine Learning" />
+                </div>
+                <div class="research-content">
+                    <h3>ระบบวิเคราะห์อัตโนมัติ</h3>
+                    <p>เราใช้เทคโนโลยี การเรียนรู้ของเครื่อง (Machine Learning) เพื่อช่วยวิเคราะห์อาการและวินิจฉัยโรคของแพะอย่างแม่นยำและทันเวลา</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'app_goat/js/home.js' %}"></script>
+{% endblock %}

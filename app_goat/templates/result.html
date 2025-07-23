@@ -1,0 +1,147 @@
+{% extends 'app_goat/components/base.html' %}
+{% load static %}
+{% block site_title %}DGOAT - ผลลัพธ์{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'app_goat/css/result.css' %}">
+<style>
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .result-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+  }
+
+  .result-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .disease-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .disease-info {
+    flex: 1;
+  }
+
+  .disease-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1565c0;
+  }
+
+  .progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 18px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: #42a5f5;
+    transition: width 0.4s ease;
+  }
+
+  .percentage-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 100px;
+  }
+
+  .percentage {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1e88e5;
+  }
+
+  .detail-button {
+    text-decoration: none;
+    padding: 6px 12px;
+    background-color: #1976d2;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .detail-button:hover {
+    background-color: #0d47a1;
+  }
+
+  .back-button-container {
+    margin-top: 30px;
+  }
+
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #90caf9;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #0d47a1;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-button:hover {
+    background-color: #64b5f6;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+  <div class="header">
+    <h1>ผลลัพธ์การวินิจฉัย</h1>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="result-container">
+      {% for pk, title, prob, image in prediction_with_proba %}
+      <div class="result-card">
+        <img src="{% static image %}" alt="{{ title }}" class="disease-image">
+        <div class="disease-info">
+          <div class="disease-name">{{ title }}</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: {{ prob }}%"></div>
+          </div>
+        </div>
+        <div class="percentage-info">
+          <div class="percentage">{{ prob|floatformat:2 }}%</div>
+          <a href="{% url 'detail' pk=pk %}" class="detail-button">ดูรายละเอียด</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="back-button-container">
+      <a href="{% url 'diagnosis' %}" class="back-button">
+        ← กลับไปหน้าวินิจฉัย
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'app_goat/js/result.js' %}"></script>
+{% endblock %}

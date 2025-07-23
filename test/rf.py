@@ -53,5 +53,5 @@ for i, class_name in enumerate(class_names):
 
 model.fit(x, y_encode)
 
-# jb.dump(model, 'test/RF_model.pkl')
-# jb.dump(le, 'test/label_encoder.pkl')
+#jb.dump(model, 'test/RF_model.pkl')
+#jb.dump(le, 'test/label_encoder.pkl')

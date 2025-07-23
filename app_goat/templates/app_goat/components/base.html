@@ -39,8 +39,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    position: relative;
-    border-radius: 10px;
+    position: fixed;
+    height: 100vh;
+    border-radius: 0 10px 10px 0;
     box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
 }
 
@@ -94,6 +95,7 @@ body {
 .main-content {
     flex: 1;
     padding: 30px;
+    margin-left: 250px;
     overflow-y: auto;
 }
 
@@ -129,28 +131,30 @@ body {
       </div>
 
       <nav class="nav-menu">
-        <a href="{% url 'home'%}" class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+        <a href="{% url 'home'%}" class="nav-item {% if request.path == '/' %}active{% endif %}">
           <i class="fas fa-home">
           </i>
           หน้าหลัก
         </a>
-        <a href="{% url 'list'%}" class="nav-item {% if request.resolver_match.url_name == 'list' %}active{% endif %}">
+        <a href="{% url 'list'%}" class="nav-item {% if request.path == '/list/' %}active{% endif %}">
           <i class="fas fa-notes-medical">
           </i>
           โรคของแพะ
         </a>
-        <a href="{% url 'form'%}" class="nav-item {% if request.resolver_match.url_name == 'form' %}active{% endif %}">
+        <a href="{% url 'form'%}" class="nav-item {% if request.path == '/form/' %}active{% endif %}">
           <i class="fas fa-stethoscope">
           </i>
           วินิจฉัยโรค
         </a>
-        <a href="#" class="nav-item {% if request.resolver_match.url_name == 'result' %}active{% endif %} ">
+        <!--
+        <a href="{% url 'result' %}" class="nav-item {% if request.path == '/result/' %}active{% endif %} ">
           <i class="fas fa-stethoscope">
           </i>
           ผลการวิจัยโรค
         </a>
+      -->
         <a href="{% url 'about'%}"
-          class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+          class="nav-item {% if request.path == '/about/' %}active{% endif %}">
           <i class="fas fa-info-circle">
           </i>
           เกี่ยวกับเรา

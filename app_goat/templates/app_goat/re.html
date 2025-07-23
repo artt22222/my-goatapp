@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGOAT - ผลลัพธ์ความน่าจะเป็นของโรค</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: linear-gradient(135deg, #4db6ac 0%, #26a69a 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #80cbc4 0%, #4db6ac 100%);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: #ffd54f;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-item-icon {
+            font-size: 20px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .results-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .disease-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .disease-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .disease-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .probability-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4db6ac 0%, #26a69a 100%);
+            border-radius: 6px;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .percentage-badge {
+            background: #ffd54f;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+            min-width: 60px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(255, 213, 79, 0.3);
+        }
+
+        .details-btn {
+            background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 213, 79, 0.3);
+        }
+
+        .details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 213, 79, 0.4);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 15px;
+            }
+            
+            .nav-menu {
+                flex-direction: row;
+                gap: 10px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .result-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .disease-info {
+                align-items: center;
+            }
+            
+            .probability-container {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .progress-bar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>ผลลัพธ์ความน่าจะเป็นของโรค</h1>
+            </div>
+
+            <div class="results-container">
+                
+
+                <!-- Result 3 -->
+                <div class="result-card">
+                    <div class="result-content">
+                        <img src="https://via.placeholder.com/80x80/4db6ac/ffffff?text=🐐" alt="โรคปากและกีบเปื่อย" class="disease-image">
+                        <div class="disease-info">
+                            <div class="disease-name">โรคปากและกีบเปื่อย</div>
+                            <div class="probability-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%"></div>
+                                </div>
+                                <div class="percentage-badge">20%</div>
+                                <button class="details-btn">ดูรายละเอียด</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="goBack()">← กลับไปวินิจฉัยใหม่</button>
+
+    <script>
+        // Animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.result-card');
+            
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Animate progress bars
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+            }, 800);
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Add click handlers for details buttons
+        document.querySelectorAll('.details-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('แสดงรายละเอียดของโรค');
+            });
+        });
+
+        // Dynamic data example (you can replace this with actual data from your Django backend)
+        const diseaseData = [
+            { name: 'โรคปากและกีบเปื่อย', percentage: 50, image: 'disease1.jpg' },
+            { name: 'โรคปอดบวม', percentage: 30, image: 'disease2.jpg' },
+            { name: 'โรคท้องเสีย', percentage: 20, image: 'disease3.jpg' }
+        ];
+
+        // Function to update results with new data
+        function updateResults(data) {
+            const container = document.querySelector('.results-container');
+            container.innerHTML = '';
+            
+            data.forEach(disease => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.innerHTML = `
+                    <div class="result-content">
+                        <img src="https://via.placeholder.com/80x80/4db6ac/ffffff?text=🐐" alt="${disease.name}" class="disease-image">
+                        <div class="disease-info">
+                            <div class="disease-name">${disease.name}</div>
+                            <div class="probability-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${disease.percentage}%"></div>
+                                </div>
+                                <div class="percentage-badge">${disease.percentage}%</div>
+                                <button class="details-btn">ดูรายละเอียด</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

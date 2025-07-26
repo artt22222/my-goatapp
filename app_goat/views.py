@@ -34,23 +34,23 @@ def diagnosis(request):
             print("🧠 เวกเตอร์ที่ส่งเข้าโมเดล:", symptoms_vector)  
 
             # คำนวณความน่าจะเป็น
-            proba = model.predict_proba([symptoms_vector])[0]  # ผลลัพธ์เช่น [0.1, 0.05, ..., 0.4]
-            class_labels = label_encoder.inverse_transform(range(len(proba)))  # ['โรค A', 'โรค B', ...]
+            proba = model.predict_proba([symptoms_vector])[0]   
+            class_labels = label_encoder.inverse_transform(range(len(proba)))  
 
-            # Step 1: zip + sort
+            #  zip + sort
             zipped = sorted(zip(class_labels, proba * 100), key=lambda x: x[1], reverse=True)
 
-            # Step 2: แยก top 3
+            #  แยก top 3
             top3 = zipped[:3]
 
-            # Step 3: หารวมของ "เปอร์เซ็นต์ทั้งหมด"
-            total_percent = sum([p for _, p in zipped])  # ปกติจะได้ ~100%
+            # หารวมของ "เปอร์เซ็นต์ทั้งหมด"
+            total_percent = sum([p for _, p in zipped])  
 
-            # Step 4: คำนวณเปอร์เซ็นต์ส่วนเกินจาก top3
+            #  คำนวณเปอร์เซ็นต์ส่วนเกินจาก top3
             top3_sum = sum([p for _, p in top3])
             other_sum = total_percent - top3_sum
 
-            # Step 5: รวม other_sum เข้ากับอันดับที่ 1
+            #  รวม other_sum เข้ากับอันดับที่ 1
             top1_label, top1_prob = top3[0]
             top3[0] = (top1_label, top1_prob + other_sum)
 

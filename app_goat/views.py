@@ -54,7 +54,7 @@ def diagnosis(request):
             top1_label, top1_prob = top3[0]
             top3[0] = (top1_label, top1_prob + other_sum)
 
-            # ✅ Prediction with adjusted probability
+            #  ทำนายด้วยความน่าจะเป็นที่ปรับแล้ว
             prediction_with_proba_raw = top3
 
 
@@ -97,7 +97,7 @@ def diagnosis(request):
             d.title: d.pk for d in Diseases.objects.all()
 }
 
-            # ✅ รวมชื่อภาษาไทย + ความน่าจะเป็น + รูปภาพ
+            # รวมชื่อภาษาไทย + ความน่าจะเป็น + รูปภาพ
             prediction_with_proba = [
                 (
                 disease_thai_name_to_pk.get(disease_name_map.get(disease_code, disease_code), None),  # pk

@@ -1,9 +1,9 @@
-{% extends 'app_goat/components/base.html' %}
+{% extends 'components/base.html' %}
 {% load humanize %}
 {% load static %}
 {% block site_title %}DGOAT - ระบบวิจัยโรคของแพะ {% endblock %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'app_goat/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
                 <a href="{% url 'form'%}" class="cta-button">เริ่มวินิจฉัย</a>
             </div>
             <div class="hero-image">
-                <img src="{% static 'app_goat/images/g-home-1.png' %}" alt="people-farm">
+                <img src="{% static 'images/g-home-1.png' %}" alt="people-farm">
             </div>
         </div>
 
@@ -31,7 +31,7 @@
         <div class="stats-cards">
             <div class="stat-card">
                 <div class="stat-icon">
-                    <img src="{% static 'app_goat/images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+                    <img src="{% static 'images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
                 </div>
                 <div class="stat-content">
                     <div class="stat-number" data-value="{{stats.total_goats}}" data-suffix=" ตัว">{{ stats.total_goats|intcomma }} ตัว</div>
@@ -41,7 +41,7 @@
 
             <div class="stat-card">
                 <div class="stat-icon">
-                    <img src="{% static 'app_goat/images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+                    <img src="{% static 'images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
 
                 </div>
                 <div class="stat-content">
@@ -52,7 +52,7 @@
 
             <div class="stat-card">
                 <div class="stat-icon">
-                    <img src="{% static 'app_goat/images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+                    <img src="{% static 'images/goat.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
 
                 </div>
                 <div class="stat-content">
@@ -63,7 +63,7 @@
 
             <div class="stat-card">
                 <div class="stat-icon">
-                    <img src="{% static 'app_goat/images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
+                    <img src="{% static 'images/farmer.png' %}" alt="Logo" style="width: 40px; height: 40px; ">
 
                 </div>
                 <div class="stat-content">
@@ -77,7 +77,7 @@
         <div class="research-section">
             <div class="research-card">
                 <div class="research-image">
-                    <img src="{% static 'app_goat/images/goat_2.jpg' %}" alt="Goat Research" />
+                    <img src="{% static 'images/goat_2.jpg' %}" alt="Goat Research" />
                 </div>
                 <div class="research-content">
                     <h3>เพราะความใส่ใจคือ หนึ่งในจุดมุ่งหมายของเรา</h3>
@@ -87,7 +87,7 @@
 
             <div class="research-card">
                 <div class="research-image">
-                    <img src="{% static 'app_goat/images/ml.jpg' %}" alt="Machine Learning" />
+                    <img src="{% static 'images/ml.jpg' %}" alt="Machine Learning" />
                 </div>
                 <div class="research-content">
                     <h3>ระบบวิเคราะห์อัตโนมัติ</h3>
@@ -101,5 +101,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'app_goat/js/home.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

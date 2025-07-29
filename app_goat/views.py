@@ -75,20 +75,19 @@ def diagnosis(request):
             }
 
             # path รูปภาพ
-            base_path = 'app_goat/disease/'
             image_map = {
-                'โรคปากและเท้าเปื่อย': f'{base_path}f_m.jpg',
-                'โรคปากเปื่อยพุพอง': f'{base_path}m.png',
-                'โรคแอนแทรกซ์': f'{base_path}antrax.png',
-                'โรคข้ออักเสบ': f'{base_path}arth.jpg',
-                'โรคข้อและสมองอักเสบ': f'{base_path}brain_arth.png',
-                'โรคปอดปวมจากแบคทีเรีย': f'{base_path}bac.png',
-                'โรคเมลิออยด์': f'{base_path}meli.jpg',
-                'โรควัณโรค': f'{base_path}tub.png',
-                'โรคตาอักเสบ': f'{base_path}eye.png',
-                'โรคผิวหนัง': f'{base_path}skin.png',
-                'โรคพีพีอาร์': f'{base_path}ppr.jpg',
-                'โรคพยาธิภายใน': f'{base_path}internal.jpg',
+                'โรคปากและเท้าเปื่อย': 'disease/f_m.jpg',
+                'โรคปากเปื่อยพุพอง': 'disease/m.png',
+                'โรคแอนแทรกซ์': 'disease/antrax.png',
+                'โรคข้ออักเสบ': 'disease/arth.jpg',
+                'โรคข้อและสมองอักเสบ': 'disease/brain_arth.png',
+                'โรคปอดปวมจากแบคทีเรีย': 'disease/bac.png',
+                'โรคเมลิออยด์': 'disease/meli.jpg',
+                'โรควัณโรค': 'disease/tub.png',
+                'โรคตาอักเสบ': 'disease/eye.png',
+                'โรคผิวหนัง': 'disease/skin.png',
+                'โรคพีพีอาร์': 'disease/ppr.jpg',
+                'โรคพยาธิภายใน': 'disease/internal.jpg',
             }
 
             
@@ -103,13 +102,13 @@ def diagnosis(request):
                 disease_thai_name_to_pk.get(disease_name_map.get(disease_code, disease_code), None),  # pk
                 disease_name_map.get(disease_code, disease_code),  # title (ชื่อโรค)
                 prob,
-                image_map.get(disease_name_map.get(disease_code, disease_code), f'{base_path}default.png')  # รูป
+                image_map.get(disease_name_map.get(disease_code, disease_code), 'disease/default.png')  # รูป
                 )
                 for disease_code, prob in prediction_with_proba_raw
             ]
 
 
-            return render(request, 'app_goat/result.html', {
+            return render(request, 'result.html', {
                 'prediction_with_proba': prediction_with_proba,
                 'symptoms': symptoms,
             })
@@ -117,37 +116,37 @@ def diagnosis(request):
         except Exception as e:
             print("❌ Error:", str(e))
             traceback.print_exc()
-            return render(request, 'app_goat/error.html', {'error': str(e)})
+            return render(request, 'error.html', {'error': str(e)})
 
-    return render(request, 'app_goat/form.html')
+    return render(request, 'form.html')
 
 
 
 # ฟังก์ชันที่ใช้แสดงข้อมูลเกี่ยวกับโรค
 def about(request):
-    return render(request, 'app_goat/about.html')
+    return render(request, 'about.html')
 
 # ฟังก์ชันที่ใช้แสดงข้อมูลในฟอร์ม
 def form(request):
-    return render(request, 'app_goat/form.html')
+    return render(request, 'form.html')
 
 # ฟังก์ชันที่แสดงรายชื่อโรคทั้งหมด
 def list(request):
     diseases = Diseases.objects.all()  # ดึงข้อมูลโรคทั้งหมดจากฐานข้อมูล
     context = {'diseases': diseases}
-    return render(request, 'app_goat/list.html', context)
+    return render(request, 'list.html', context)
 
 # ฟังก์ชันที่แสดงรายละเอียดของโรค
 def detail(request, pk):
     disease = get_object_or_404(Diseases, pk=pk)  # ดึงข้อมูลโรคที่ต้องการแสดง
     context = {'disease': disease}
-    return render(request, 'app_goat/detail.html', context)
+    return render(request, 'detail.html', context)
 
 # ฟังก์ชันที่ใช้แสดงข้อมูลสถิติ
 def home(request):
     stats = GoatStatistics.objects.last()  # ดึงข้อมูลสถิติล่าสุด
-    return render(request, 'app_goat/home.html', {'stats': stats})
+    return render(request, 'home.html', {'stats': stats})
 
 # ฟังก์ชันที่แสดงผลลัพธ์หลังจากการวินิจฉัย
 def result(request):
-    return render(request, 'app_goat/result.html')
+    return render(request, 'result.html')

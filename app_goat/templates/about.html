@@ -1,9 +1,9 @@
-{% extends 'app_goat/components/base.html' %}
+{% extends 'components/base.html' %}
 
 {% load static %}
 {% block site_title %}DGOAT - เกี่ยวกับเรา {% endblock %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'app_goat/css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -37,11 +37,11 @@
 
             <div class="image-gallery">
                 <div class="image-card image-1">
-                    <img src="{% static 'app_goat/images/ml.jpg' %}" alt="Architecture 1" />
+                    <img src="{% static 'images/ml.jpg' %}" alt="Architecture 1" />
                 </div>
 
                 <div class="image-card image-3">
-                    <img src="{% static 'app_goat/images/goat_2.jpg' %}" alt="Architecture 3" />
+                    <img src="{% static 'images/goat_2.jpg' %}" alt="Architecture 3" />
                 </div>
             </div>
         </div>
@@ -62,12 +62,12 @@
         </div>
 
         <div class="image-bottom">
-            <img src="{% static 'app_goat/images/about_-work.png' %}" alt="Image" class="bottom-image">
+            <img src="{% static 'images/about_-work.png' %}" alt="Image" class="bottom-image">
         </div>
     </div>
 </div>
 
 {% endblock %}
 {% block scripts %}
-<script src="{% static 'app_goat/js/about.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
 {% endblock %}

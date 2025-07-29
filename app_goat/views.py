@@ -75,20 +75,19 @@ def diagnosis(request):
             }
 
             # path รูปภาพ
-            base_path = 'app_goat/disease/'
             image_map = {
-                'โรคปากและเท้าเปื่อย': f'{base_path}f_m.jpg',
-                'โรคปากเปื่อยพุพอง': f'{base_path}m.png',
-                'โรคแอนแทรกซ์': f'{base_path}antrax.png',
-                'โรคข้ออักเสบ': f'{base_path}arth.jpg',
-                'โรคข้อและสมองอักเสบ': f'{base_path}brain_arth.png',
-                'โรคปอดปวมจากแบคทีเรีย': f'{base_path}bac.png',
-                'โรคเมลิออยด์': f'{base_path}meli.jpg',
-                'โรควัณโรค': f'{base_path}tub.png',
-                'โรคตาอักเสบ': f'{base_path}eye.png',
-                'โรคผิวหนัง': f'{base_path}skin.png',
-                'โรคพีพีอาร์': f'{base_path}ppr.jpg',
-                'โรคพยาธิภายใน': f'{base_path}internal.jpg',
+                'โรคปากและเท้าเปื่อย': 'disease/f_m.jpg',
+                'โรคปากเปื่อยพุพอง': 'disease/m.png',
+                'โรคแอนแทรกซ์': 'disease/antrax.png',
+                'โรคข้ออักเสบ': 'disease/arth.jpg',
+                'โรคข้อและสมองอักเสบ': 'disease/brain_arth.png',
+                'โรคปอดปวมจากแบคทีเรีย': 'disease/bac.png',
+                'โรคเมลิออยด์': 'disease/meli.jpg',
+                'โรควัณโรค': 'disease/tub.png',
+                'โรคตาอักเสบ': 'disease/eye.png',
+                'โรคผิวหนัง': 'disease/skin.png',
+                'โรคพีพีอาร์': 'disease/ppr.jpg',
+                'โรคพยาธิภายใน': 'disease/internal.jpg',
             }
 
             
@@ -103,7 +102,7 @@ def diagnosis(request):
                 disease_thai_name_to_pk.get(disease_name_map.get(disease_code, disease_code), None),  # pk
                 disease_name_map.get(disease_code, disease_code),  # title (ชื่อโรค)
                 prob,
-                image_map.get(disease_name_map.get(disease_code, disease_code), f'{base_path}default.png')  # รูป
+                image_map.get(disease_name_map.get(disease_code, disease_code), 'disease/default.png')  # รูป
                 )
                 for disease_code, prob in prediction_with_proba_raw
             ]

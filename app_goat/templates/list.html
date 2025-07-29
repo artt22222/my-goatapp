@@ -1,9 +1,9 @@
-{% extends 'app_goat/components/base.html' %}
+{% extends 'components/base.html' %}
 
 {% load static %}
 {% block site_title %}DGOAT - ข้อมูลโรค {% endblock %}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'app_goat/css/list.css' %}">
+<link rel="stylesheet" href="{% static 'css/list.css' %}">
 {% endblock %}
 {% block content %}
 <div class="main-content">
@@ -19,7 +19,7 @@
           {% if disease.image %}
             <img src="{{ disease.image.url }}" alt="{{ disease.title }}" class="disease-img">
           {% else %}
-            <img src="{% static 'app_goat/images/default.jpg' %}" alt="No image" class="disease-img">
+            <img src="{% static 'images/default.jpg' %}" alt="No image" class="disease-img">
           {% endif %}
           <div class="disease-title">
             {{ disease.title }}

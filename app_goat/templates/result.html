@@ -1,9 +1,9 @@
-{% extends 'app_goat/components/base.html' %}
+{% extends 'components/base.html' %}
 {% load static %}
 {% block site_title %}DGOAT - ผลลัพธ์{% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'app_goat/css/result.css' %}">
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
 <style>
   .result-container {
     display: flex;
@@ -143,5 +143,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'app_goat/js/result.js' %}"></script>
+<script src="{% static 'js/result.js' %}"></script>
 {% endblock %}

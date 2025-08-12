@@ -40,22 +40,17 @@ def diagnosis(request):
             #  zip + sort
             zipped = sorted(zip(class_labels, proba * 100), key=lambda x: x[1], reverse=True)
 
-            #  แยก top 3
+            # เอา top3
             top3 = zipped[:3]
 
-            # หารวมของ "เปอร์เซ็นต์ทั้งหมด"
-            total_percent = sum([p for _, p in zipped])  
+            # รวมเปอร์เซ็นต์ top3 เดิม
+            top3_sum = sum(p for _, p in top3)
 
-            #  คำนวณเปอร์เซ็นต์ส่วนเกินจาก top3
-            top3_sum = sum([p for _, p in top3])
-            other_sum = total_percent - top3_sum
-
-            #  รวม other_sum เข้ากับอันดับที่ 1
-            top1_label, top1_prob = top3[0]
-            top3[0] = (top1_label, top1_prob + other_sum)
+            # ปรับสัดส่วนด้วยบัญญัติไตรยางค์
+            top3_scaled = [(label, p / top3_sum * 100) for label, p in top3]
 
             #  ทำนายด้วยความน่าจะเป็นที่ปรับแล้ว
-            prediction_with_proba_raw = top3
+            prediction_with_proba_raw = top3_scaled
 
 
             # แปลงชื่อย่อโรค → ภาษาไทย

@@ -1,9 +1,6 @@
 # ไฟล์ Python และ cache
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-
 
 # ไฟล์ Log
 *.log

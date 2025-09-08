@@ -29,3 +29,8 @@
                 }
             });
         });
+
+        function toggleOthers() {
+        const div = document.getElementById("others");
+        div.style.display = div.style.display === "none" ? "block" : "none";
+}

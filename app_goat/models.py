@@ -5,7 +5,7 @@ from django.db import models
 class Diseases(models.Model):
     title = models.CharField(max_length=50)
     cause = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
-    sympton = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
+    symptom = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
     treatment = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
     image = models.ImageField(upload_to='disease_images/',blank=True,null=True)
     

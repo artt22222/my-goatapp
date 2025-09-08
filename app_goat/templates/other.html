@@ -1,7 +1,7 @@
 {% extends 'components/base.html' %}
 {% load static %}
-{% block site_title %}DGOAT - ผลลัพธ์{% endblock %}
 
+{% block site_title %}DGOAT - อื่นๆ{% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/result.css' %}">
 <style>
@@ -111,56 +111,35 @@
 {% block content %}
 <div class="main-content">
   <div class="header">
-    <h1>ผลลัพธ์การวินิจฉัย</h1>
+    <h1>โรคอื่นๆ</h1>
   </div>
 
   <div class="content-wrapper">
-    <div class="result-container">
-      {% for pk, title, prob, image in prediction_with_proba %}
-      {% if title == "อื่นๆ" %}
-      <!-- กรณี Other -->
-      <div class="result-card">
-        <div class="disease-info">
-          <div class="disease-name">อื่นๆ</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: {{ prob }}%"></div>
-          </div>
-        </div>
-        <div class="percentage-info">
-          <div class="percentage">{{ prob|floatformat:2 }}%</div>
-          <!-- กดเพื่อดู diseases ที่อยู่ใน Other -->
-          <a href="{% url 'other_diseases' %}" class="detail-button">ดูทั้งหมด</a>
+    {% for disease in other_diseases %}
+    <div class="result-card">
+      <img src="{{ disease.image }}" alt="{{ disease.title }}" class="disease-image">
+      <div class="disease-info">
+        <div class="disease-name">{{ disease.title }}</div>
+        <div class="progress-container">
+          <div class="progress-bar" style="width: {{ disease.prob }}%"></div>
         </div>
       </div>
-      {% else %}
-      <!-- กรณี Top3 -->
-      <div class="result-card">
-        <img src="{{ image }}" alt="{{ title }}" class="disease-image">
-        <div class="disease-info">
-          <div class="disease-name">{{ title }}</div>
-          <div class="progress-container">
-            <div class="progress-bar" style="width: {{ prob }}%"></div>
-          </div>
-        </div>
-        <div class="percentage-info">
-          <div class="percentage">{{ prob|floatformat:2 }}%</div>
-          <a href="{% url 'detail' pk=pk %}" class="detail-button">ดูรายละเอียด</a>
-        </div>
+      <div class="percentage-info">
+        <div class="percentage">{{ disease.prob }}%</div>
+        {% if disease.pk %}
+        <a href="{% url 'detail' pk=disease.pk %}" class="detail-button">ดูรายละเอียด</a>
+        {% endif %}
       </div>
-      {% endif %}
-      {% endfor %}
     </div>
-
+    {% empty %}
+    <p>ไม่พบโรคเพิ่มเติม</p>
+    {% endfor %}
 
     <div class="back-button-container">
-      <a href="{% url 'form' %}" class="back-button">
-        ← กลับไปหน้าวินิจฉัย
+      <a href="{% url 'result' %}" class="back-button">
+        ← กลับไปผลลัพธ์
       </a>
     </div>
   </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script src="{% static 'js/result.js' %}"></script>
 {% endblock %}

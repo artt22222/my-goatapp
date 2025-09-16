@@ -1,15 +1,12 @@
 from django.db import models
 
-# Create your models here.
-
 class Diseases(models.Model):
     title = models.CharField(max_length=50)
-    cause = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
-    symptom = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
-    treatment = models.TextField(default="ข้อมูลไม่ระบุ", blank=True,null=True)
-    image = models.ImageField(upload_to='disease_images/',blank=True,null=True)
-    
-    
+    cause = models.TextField(default="เพิ่มข้อมูล", blank=True, null=True)
+    symptom = models.TextField(default="เพิ่มข้อมูล", blank=True, null=True)
+    treatment = models.TextField(default="เพิ่มข้อมูล", blank=True, null=True)
+    image = models.ImageField(upload_to='disease_images/', blank=True, null=True)
+
     def __str__(self):
         return '{} (id={})'.format(self.title, self.id)
     

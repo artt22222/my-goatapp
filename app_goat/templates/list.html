@@ -12,23 +12,32 @@
   </header>
 
   <div class="content-grid">
-  <div class="disease-grid">
-    {% for disease in diseases %}
-      <a href="{% url 'detail' disease.id %}" class="text-decoration-none">
-        <div class="disease-card">
-          {% if disease.image %}
-            <img src="{{ disease.image.url }}" alt="{{ disease.title }}" class="disease-img">
-          {% else %}
+    <div class="disease-grid">
+      {% for disease in diseases %}
+        {% if disease.id %}
+          <a href="{% url 'detail' disease.id %}" class="text-decoration-none">
+            <div class="disease-card">
+              {% if disease.image %}
+                <img src="{{ disease.image.url }}" alt="{{ disease.title }}" class="disease-img">
+              {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="No image" class="disease-img">
+              {% endif %}
+              <div class="disease-title">
+                {{ disease.title }}
+              </div>
+            </div>
+          </a>
+        {% else %}
+          <div class="disease-card">
             <img src="{% static 'images/default.jpg' %}" alt="No image" class="disease-img">
-          {% endif %}
-          <div class="disease-title">
-            {{ disease.title }}
+            <div class="disease-title">
+              {{ disease.title }} (ยังไม่มีข้อมูล)
+            </div>
           </div>
-        </div>
-      </a>
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
-</div>
 </div>
 
 {% endblock %}

@@ -23,7 +23,7 @@
                                 <div class="section-title">สาเหตุ</div>
                             </div>
                             <div class="section-content">
-                                {{ disease.cause }}
+                                {{ disease.cause | linebreaksbr }}
                             </div>
                         </div>
 
@@ -33,7 +33,7 @@
                                 <div class="section-title">อาการ</div>
                             </div>
                             <div class="section-content">
-                                 {{ disease.symptom }}
+                                 {{ disease.symptom | linebreaksbr }}
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@
                                 <div class="section-title">การรักษา/การป้องกัน</div>
                             </div>
                             <div class="section-content">
-                               {{ disease.treatment }}
+                               {{ disease.treatment | linebreaksbr }}
                             </div>
                         </div>
                     </div>

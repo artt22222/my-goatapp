@@ -65,8 +65,8 @@ print("\n Best Parameters:")
 print(grid_search.best_params_)
 print(f" Best F1-score (macro avg): {grid_search.best_score_:.4f}")
 
-# === STEP 8: Detailed report for the best model ===
-print("\n=== Detailed classification report for best model (on training set) ===")
-best_model = grid_search.best_estimator_
-y_pred_best = best_model.predict(X)
-print(classification_report(y_encoded, y_pred_best, target_names=le.classes_))
+# # === STEP 8: Detailed report for the best model ===
+# print("\n=== Detailed classification report for best model (on training set) ===")
+# best_model = grid_search.best_estimator_
+# y_pred_best = best_model.predict(X)
+# print(classification_report(y_encoded, y_pred_best, target_names=le.classes_))

@@ -56,7 +56,7 @@ print("/n Best Parameter :")
 print(grid_search.best_params_)
 print(f" Best f1-score : {grid_search.best_score_:.4f}")
 
-print("\n Classification Report best model")
-best_model = grid_search.best_estimator_
-y_pred_best = best_model.predict(x)
-print(classification_report(ylabel, y_pred_train, target_names=le.classes_))
+# print("\n Classification Report best model")
+# best_model = grid_search.best_estimator_
+# y_pred_best = best_model.predict(x)
+# print(classification_report(ylabel, y_pred_train, target_names=le.classes_))

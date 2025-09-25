@@ -125,8 +125,20 @@ def list(request):
 
 def detail(request, pk):
     disease = get_object_or_404(Diseases, pk=pk)
-    context = {'disease': disease}
+
+    # ตรวจสอบ referrer
+    referrer = request.META.get('HTTP_REFERER', '')
+    if 'list' in referrer:
+        request.session['back_from'] = 'list'
+    else:
+        request.session['back_from'] = 'result'  # fallback ถ้าเข้ามาโดยตรง
+
+    context = {
+        'disease': disease,
+        'back_from': request.session['back_from'],  # ส่งไป template ด้วย
+    }
     return render(request, 'detail.html', context)
+
 
 def home(request):
     stats = GoatStatistics.objects.last()

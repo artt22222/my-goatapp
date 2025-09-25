@@ -4,108 +4,6 @@
 {% block site_title %}DGOAT - อื่นๆ{% endblock %}
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/result.css' %}">
-<style>
-  .result-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .result-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s;
-  }
-
-  .result-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .disease-image {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-
-  .disease-info {
-    flex: 1;
-  }
-
-  .disease-name {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #1565c0;
-  }
-
-  .progress-container {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 18px;
-  }
-
-  .progress-bar {
-    height: 100%;
-    background-color: #42a5f5;
-    transition: width 0.4s ease;
-  }
-
-  .percentage-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 10px;
-    min-width: 100px;
-  }
-
-  .percentage {
-    font-size: 20px;
-    font-weight: bold;
-    color: #1e88e5;
-  }
-
-  .detail-button {
-    text-decoration: none;
-    padding: 6px 12px;
-    background-color: #1976d2;
-    color: white;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-
-  .detail-button:hover {
-    background-color: #0d47a1;
-  }
-
-  .back-button-container {
-    margin-top: 30px;
-  }
-
-  .back-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #90caf9;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #0d47a1;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-
-  .back-button:hover {
-    background-color: #64b5f6;
-  }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -115,29 +13,28 @@
   </div>
 
   <div class="content-wrapper">
-    {% for disease in other_diseases %}
-    <div class="result-card">
-      <img src="{{ disease.image }}" alt="{{ disease.title }}" class="disease-image">
-      <div class="disease-info">
-        <div class="disease-name">{{ disease.title }}</div>
-        <div class="progress-container">
-          <div class="progress-bar" style="width: {{ disease.prob }}%"></div>
+     {% for disease in other_diseases %}
+      <div class="result-card">
+        <img src="{{ disease.image }}" alt="{{ disease.title }}" class="disease-image">
+        <div class="disease-info">
+          <div class="disease-name">{{ disease.title }}</div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: {{ disease.prob }}%"></div>
+          </div>
+        </div>
+        <div class="percentage-info">
+          <div class="percentage">{{ disease.prob }}%</div>
+          {% if disease.pk %}
+          <a href="{% url 'detail' pk=disease.pk %}" class="detail-button">ดูรายละเอียด</a>
+          {% endif %}
+
         </div>
       </div>
-      <div class="percentage-info">
-        <div class="percentage">{{ disease.prob }}%</div>
-        {% if disease.pk %}
-        <a href="{% url 'detail' pk=disease.pk %}" class="detail-button">ดูรายละเอียด</a>
-        {% endif %}
-      </div>
-    </div>
-    {% empty %}
-    <p>ไม่พบโรคเพิ่มเติม</p>
-    {% endfor %}
+      {% endfor %}
 
     <div class="back-button-container">
       <a href="{% url 'result' %}" class="back-button">
-        ← กลับไปผลลัพธ์
+         กลับไปผลลัพธ์
       </a>
     </div>
   </div>

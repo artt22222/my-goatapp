@@ -6,6 +6,10 @@ class Diseases(models.Model):
     symptom = models.TextField(default="เพิ่มข้อมูล", blank=True, null=True)
     treatment = models.TextField(default="เพิ่มข้อมูล", blank=True, null=True)
     image = models.ImageField(upload_to='disease_images/', blank=True, null=True)
+    
+    class Meta:
+        verbose_name = "ข้อมูลโรคของแพะ"
+        verbose_name_plural = "ข้อมูลโรคของแพะ"
 
     def __str__(self):
         return '{} (id={})'.format(self.title, self.id)

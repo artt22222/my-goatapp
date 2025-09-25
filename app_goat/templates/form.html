@@ -7,239 +7,244 @@
 {% endblock %}
 
 {% block content %}
- 
 
-     <!-- Main Content -->
-        <div class="main-content">
-            <div class="header">
-                <h1>วินิจฉัยโรคของแพะ</h1>
-                <p>เลือกอาการที่พบในแพะเพื่อทำการวินิจฉัยโรค</p>
-            </div>
 
-            <form action="/diagnosis/" method="POST">
-                {% csrf_token %}
-                <div class="symptoms-grid">
-                    <!-- พฤติกรรม & ทั่วไป -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">1</div>
-                            <div class="card-title">พฤติกรรม & อาการทั่วไป</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ซึม" id="s-general-1">
-                                <label for="s-general-1">มีอาการซึม</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="เบื่ออาหาร" id="s-general-2">
-                                <label for="s-general-2">เบื่อ/ไม่ยอมกินอาหาร</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ไข้" id="s-general-3">
-                                <label for="s-general-3">มีไข้</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ผอมลง" id="s-general-4">
-                                <label for="s-general-4">ร่างกายผอมลง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ตัวสั่น" id="s-general-5">
-                                <label for="s-general-5">มีอาการสั่น</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ตายเฉียบพลัน" id="s-general-6">
-                                <label for="s-general-6">ตายเฉียบพลัน</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="คอตก" id="s-general-7">
-                                <label for="s-general-7">เกิดอาการคอตก</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="เดินวน/เดินมึน" id="s-general-8">
-                                <label for="s-general-8">มีอาการเดินวนหรือเดินมึน</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ยืนลำบาก/เดินไม่ได้" id="s-general-9">
-                                <label for="s-general-9">ยืนลำบากหรือไม่สามารถเดินได้</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ระบบหายใจ -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">2</div>
-                            <div class="card-title">ระบบหายใจ</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ไอ" id="s-resp-1">
-                                <label for="s-resp-1">มีอาการไอ</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="หายใจลำบาก" id="s-resp-2">
-                                <label for="s-resp-2">การหายใจลำบาก</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="มีน้ำมูก" id="s-resp-3">
-                                <label for="s-resp-3">น้ำมูกไหล</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ระบบย่อยอาหาร -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">3</div>
-                            <div class="card-title">ระบบย่อยอาหาร</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ถ่ายเหลวผิดปกติ" id="s-digest-1">
-                                <label for="s-digest-1">มีอาการท้องเสีย ถ่ายเหลวผิดปกติ</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ถ่ายเป็นเลือด" id="s-digest-2">
-                                <label for="s-digest-2">ขับถ่ายมีเลือด</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ขี้สีดำ/เขียวผิดปกติ" id="s-digest-3">
-                                <label for="s-digest-3">อุจจาระเป็นสีดำหรือเขียวผิดปกติ</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="กลิ่นปากแรง" id="s-digest-4">
-                                <label for="s-digest-4">ปากมีกลิ่นแรง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="น้ำลายไหลผิดปกติ" id="s-digest-5">
-                                <label for="s-digest-5">มีน้ำลายไหลผิดปกติ</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- บริเวณช่องปาก / ศรีษะ -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">4</div>
-                            <div class="card-title">บริเวณช่องปาก / ศรีษะ</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="แผลในปาก/ลิ้น" id="s-mouth-1">
-                                <label for="s-mouth-1">มีแผลบริเวณปากหรือลิ้น</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="บวมใต้คาง" id="s-mouth-2">
-                                <label for="s-mouth-2">มีอาการบวมใต้คาง</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ผิวหนัง & ขน -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">5</div>
-                            <div class="card-title">บริเวณผิวหนังและขน</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ขนร่วง" id="s-skin-1">
-                                <label for="s-skin-1">ขนร่วง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ตุ่มใส/ตุ่มหนองที่ผิวหนัง" id="s-skin-2">
-                                <label for="s-skin-2">มีตุ่มใสหรือตุ่มหนองบริเวณผิวหนัง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="แผลบริเวณผิวหนัง" id="s-skin-3">
-                                <label for="s-skin-3">มีแผลบริเวณผิวหนัง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ผิวหนังตกสะเก็ด" id="s-skin-4">
-                                <label for="s-skin-4">ผิวหนังมีการตกสะเก็ด</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ดวงตา -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">6</div>
-                            <div class="card-title">ดวงตา</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ตาแดง" id="s-eye-1">
-                                <label for="s-eye-">ตาแดง</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="น้ำตาไหลผิดปกติ" id="s-eye-2">
-                                <label for="s-eye-2">มีน้ำตาไหลผิดปกติ</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ขี้ตาเยอะ/ตาแฉะ" id="s-eye-3">
-                                <label for="s-eye-3">มีขี้ตาเยอะหรือตาแฉะ</label>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!--  ระบบข้อต่อ/กล้ามเนื้อ -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">7</div>
-                            <div class="card-title"> ระบบข้อต่อ/กล้ามเนื้อ</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="เดินกะเผลก" id="s-joint-1">
-                                <label for="s-joint-">เดินกะเผลก</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ข้อบวม/ข้ออักเสบ" id="s-joint-2">
-                                <label for="s-joint-2">บวมหรืออักเสบ บริเวณข้อ</label>
-                            </div>
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="แผลบริเวณขา/กีบ" id="s-joint-3">
-                                <label for="s-joint-3">มีแผลบริเวณขาหรือกีบ</label>
-                            </div>
-                        </div>
-                    </div>
-                     <!--  บริเวณเต้านม -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">8</div>
-                            <div class="card-title"> บริเวณเต้านม</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="เต้านมอักเสบ" id="s-breast-1">
-                                <label for="s-breast-1">เต้านมมีการอักเสบ</label>
-                            </div>
-                        </div>
-                    </div>
-                     <!--  ระบบภูมิคุ้มกัน/ต่อมน้ำเหลือง -->
-                    <div class="symptom-card">
-                        <div class="card-header">
-                            <div class="card-icon">9</div>
-                            <div class="card-title"> ระบบภูมิคุ้มกัน/ต่อมน้ำเหลือง</div>
-                        </div>
-                        <div class="checkbox-group">
-                            <div class="checkbox-option">
-                                <input type="checkbox" name="symptoms[]" value="ต่อมน้ำเหลืองโต" id="s-immune-1">
-                                <label for="s-immune-1">ต่อมน้ำเหลืองโตผิดปกติ</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="submit-section">
-                    <button type="submit" class="submit-btn">
-                        🔍 ส่งข้อมูลวินิจฉัย
-                    </button>
-                </div>
-            </form>
-        </div>
+<!-- Main Content -->
+<div class="main-content">
+    <div class="header">
+        <h1>วินิจฉัยโรคของแพะ</h1>
+        <p>เลือกอาการที่พบในแพะเพื่อทำการวินิจฉัยโรค</p>
     </div>
 
-{% endblock %}
+    <form action="/diagnosis/" method="POST">
+        {% csrf_token %}
+        <div class="symptoms-grid">
+            <!-- พฤติกรรม & ทั่วไป -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">1</div>
+                    <div class="card-title">พฤติกรรม & อาการทั่วไป</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ซึม" id="s-general-1">
+                        <label for="s-general-1">มีอาการซึม</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="เบื่ออาหาร" id="s-general-2">
+                        <label for="s-general-2">เบื่อ/ไม่ยอมกินอาหาร</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ไข้" id="s-general-3">
+                        <label for="s-general-3">มีไข้</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ผอมลง" id="s-general-4">
+                        <label for="s-general-4">ร่างกายผอมลง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ตัวสั่น" id="s-general-5">
+                        <label for="s-general-5">มีอาการสั่น</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ตายเฉียบพลัน" id="s-general-6">
+                        <label for="s-general-6">ตายเฉียบพลัน</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="คอตก" id="s-general-7">
+                        <label for="s-general-7">เกิดอาการคอตก</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="เดินวน/เดินมึน" id="s-general-8">
+                        <label for="s-general-8">มีอาการเดินวนหรือเดินมึน</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ยืนลำบาก/เดินไม่ได้" id="s-general-9">
+                        <label for="s-general-9">ยืนลำบากหรือไม่สามารถเดินได้</label>
+                    </div>
+                </div>
+            </div>
 
+            <!-- ระบบหายใจ -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">2</div>
+                    <div class="card-title">ระบบหายใจ</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ไอ" id="s-resp-1">
+                        <label for="s-resp-1">มีอาการไอ</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="หายใจลำบาก" id="s-resp-2">
+                        <label for="s-resp-2">การหายใจลำบาก</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="มีน้ำมูก" id="s-resp-3">
+                        <label for="s-resp-3">น้ำมูกไหล</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ระบบย่อยอาหาร -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">3</div>
+                    <div class="card-title">ระบบย่อยอาหาร</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ถ่ายเหลวผิดปกติ" id="s-digest-1">
+                        <label for="s-digest-1">มีอาการท้องเสีย ถ่ายเหลวผิดปกติ</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ถ่ายเป็นเลือด" id="s-digest-2">
+                        <label for="s-digest-2">ขับถ่ายมีเลือด</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ขี้สีดำ/เขียวผิดปกติ" id="s-digest-3">
+                        <label for="s-digest-3">อุจจาระเป็นสีดำหรือเขียวผิดปกติ</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="กลิ่นปากแรง" id="s-digest-4">
+                        <label for="s-digest-4">ปากมีกลิ่นแรง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="น้ำลายไหลผิดปกติ" id="s-digest-5">
+                        <label for="s-digest-5">มีน้ำลายไหลผิดปกติ</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- บริเวณช่องปาก / ศรีษะ -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">4</div>
+                    <div class="card-title">บริเวณช่องปาก / ศรีษะ</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="แผลในปาก/ลิ้น" id="s-mouth-1">
+                        <label for="s-mouth-1">มีแผลบริเวณปากหรือลิ้น</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="บวมใต้คาง" id="s-mouth-2">
+                        <label for="s-mouth-2">มีอาการบวมใต้คาง</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ผิวหนัง & ขน -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">5</div>
+                    <div class="card-title">บริเวณผิวหนังและขน</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ขนร่วง" id="s-skin-1">
+                        <label for="s-skin-1">ขนร่วง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ตุ่มใส/ตุ่มหนองที่ผิวหนัง" id="s-skin-2">
+                        <label for="s-skin-2">มีตุ่มใสหรือตุ่มหนองบริเวณผิวหนัง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="แผลบริเวณผิวหนัง" id="s-skin-3">
+                        <label for="s-skin-3">มีแผลบริเวณผิวหนัง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ผิวหนังตกสะเก็ด" id="s-skin-4">
+                        <label for="s-skin-4">ผิวหนังมีการตกสะเก็ด</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ดวงตา -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">6</div>
+                    <div class="card-title">ดวงตา</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ตาแดง" id="s-eye-1">
+                        <label for="s-eye-">ตาแดง</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="น้ำตาไหลผิดปกติ" id="s-eye-2">
+                        <label for="s-eye-2">มีน้ำตาไหลผิดปกติ</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ขี้ตาเยอะ/ตาแฉะ" id="s-eye-3">
+                        <label for="s-eye-3">มีขี้ตาเยอะหรือตาแฉะ</label>
+                    </div>
+                </div>
+            </div>
+
+            <!--  ระบบข้อต่อ/กล้ามเนื้อ -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">7</div>
+                    <div class="card-title"> ระบบข้อต่อ/กล้ามเนื้อ</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="เดินกะเผลก" id="s-joint-1">
+                        <label for="s-joint-">เดินกะเผลก</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ข้อบวม/ข้ออักเสบ" id="s-joint-2">
+                        <label for="s-joint-2">บวมหรืออักเสบ บริเวณข้อ</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="แผลบริเวณขา/กีบ" id="s-joint-3">
+                        <label for="s-joint-3">มีแผลบริเวณขาหรือกีบ</label>
+                    </div>
+                </div>
+            </div>
+            <!--  บริเวณเต้านม -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">8</div>
+                    <div class="card-title"> บริเวณเต้านม</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="เต้านมอักเสบ" id="s-breast-1">
+                        <label for="s-breast-1">เต้านมมีการอักเสบ</label>
+                    </div>
+                </div>
+            </div>
+            <!--  ระบบภูมิคุ้มกัน/ต่อมน้ำเหลือง -->
+            <div class="symptom-card">
+                <div class="card-header">
+                    <div class="card-icon">9</div>
+                    <div class="card-title"> ระบบภูมิคุ้มกัน/ต่อมน้ำเหลือง</div>
+                </div>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" name="symptoms[]" value="ต่อมน้ำเหลืองโต" id="s-immune-1">
+                        <label for="s-immune-1">ต่อมน้ำเหลืองโตผิดปกติ</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="summary-box" class="summary-box">
+            <h3>อาการที่เลือก</h3>
+            <ul id="selected-symptoms"></ul>
+        </div>
+        <div class="submit-section">
+            <button type="submit" class="submit-btn">
+                🔍 ส่งข้อมูลวินิจฉัย
+            </button>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

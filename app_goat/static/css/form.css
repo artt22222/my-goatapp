@@ -102,6 +102,35 @@
       border-radius: 3px;
   }
 
+.summary-box {
+    position: fixed;   /* ลอยจริง */
+    bottom: 90px;      /* ระยะห่างจากขอบล่าง */
+    right: 20px;       /* ลอยอยู่มุมขวาล่าง */
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 1000;
+    max-width: 250px;
+    max-height: 250px;
+    overflow-y: auto;
+    display: none; /* ซ่อนตอนยังไม่เลือก */
+}
+
+.summary-box h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.summary-box ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+
   .submit-section {
       text-align: center;
       margin-top: 40px;
@@ -109,7 +138,7 @@
 
   .submit-btn {
       padding: 15px 40px;
-      background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+      background: #34a967;
       text-decoration: none;
       border: none;
       border-radius: 25px;
@@ -117,13 +146,13 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.4);
-      color: #333;
+      box-shadow: 0 4px 15px rgba(92, 243, 152, 0.4);
+      color: #fff;
   }
 
   .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 213, 79, 0.6);
+      box-shadow: 0 6px 25px rgba(107, 251, 198, 0.6);
   }
 
   .submit-btn:active {

@@ -14,10 +14,11 @@ y_encode = le.fit_transform(y)
 
 model = XGBClassifier(
     colsample_bytree = 0.8,
-    gamma= 0, 
-    learning_rate= 0.1,
+    #gamma= 0, 
+    learning_rate= 0.5,
     max_depth= 6,
     n_estimators=300, 
+
     reg_alpha=0,
     reg_lambda=2.0,
     subsample=1.0,

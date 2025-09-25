@@ -1,0 +1,229 @@
+  .content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .disease-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .disease-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .disease-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2d3748;
+            text-align: center;
+        }
+
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #4dd0e1 0%, #26c6da 50%, #1a1a1a 100%);
+            transition: width 0.8s ease;
+            position: relative;
+        }
+
+        .progress-bar.high {
+            background: linear-gradient(90deg, #4dd0e1 0%, #26c6da 50%, #1a1a1a 100%);
+        }
+
+        .progress-bar.medium {
+            background: linear-gradient(90deg, #4dd0e1 0%, #26c6da 60%, #1a1a1a 100%);
+        }
+
+        .progress-bar.low {
+            background: linear-gradient(90deg, #4dd0e1 0%, #26c6da 70%, #1a1a1a 100%);
+        }
+
+        .percentage-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .percentage {
+            background: linear-gradient(135deg, #ffd54f 0%, #ffb300 100%);
+            color: #5d4037;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(255, 213, 79, 0.4);
+        }
+
+        .accuracy-label {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .detail-button {
+            background: linear-gradient(135deg, #4dd0e1 0%, #26c6da 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+            font-size: 14px;
+        }
+
+        .detail-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(77, 208, 225, 0.4);
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(77, 208, 225, 0.4);
+
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(77, 208, 225, 0.4);
+
+        }
+
+        .back-button::before {
+            content: '←';
+            font-size: 18px;
+        }
+
+        /* Animation */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .result-card:nth-child(1) { animation-delay: 0.1s; }
+        .result-card:nth-child(2) { animation-delay: 0.3s; }
+        .result-card:nth-child(3) { animation-delay: 0.5s; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 15px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-menu {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .nav-item {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .result-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .disease-info {
+                align-items: center;
+            }
+
+            .percentage-info {
+                flex-direction: column;
+                gap: 10px;
+                margin-left: 0;
+            }
+        }

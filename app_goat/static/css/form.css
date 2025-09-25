@@ -1,0 +1,163 @@
+  .symptoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+
+  .symptom-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .symptom-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+  }
+
+  .card-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
+  }
+
+  .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+  }
+
+  .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      padding-right: 5px;
+  }
+
+  .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+  }
+
+  .checkbox-option:hover {
+      background: rgba(66, 165, 245, 0.1);
+  }
+
+  .checkbox-option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #42a5f5;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  .checkbox-option label {
+      font-size: 15px;
+      color: #333;
+      cursor: pointer;
+      flex: 1;
+  }
+
+  /* Scrollbar */
+  .checkbox-group::-webkit-scrollbar {
+      width: 6px;
+  }
+
+  .checkbox-group::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%);
+      border-radius: 3px;
+  }
+
+  .checkbox-group::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 3px;
+  }
+
+  .submit-section {
+      text-align: center;
+      margin-top: 40px;
+  }
+
+  .submit-btn {
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #ffd54f 0%, #ffca28 100%);
+      text-decoration: none;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.4);
+      color: #333;
+  }
+
+  .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 213, 79, 0.6);
+  }
+
+  .submit-btn:active {
+      transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+      .container {
+          flex-direction: column;
+      }
+
+      .sidebar {
+          width: 100%;
+          flex-direction: row;
+          overflow-x: auto;
+          padding: 15px;
+          border-radius: 0;
+      }
+
+      .nav-menu {
+          flex-direction: row;
+          gap: 10px;
+      }
+
+      .main-content {
+          padding: 20px;
+      }
+
+      .symptoms-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+      }
+
+      .header h1 {
+          font-size: 28px;
+      }
+  }

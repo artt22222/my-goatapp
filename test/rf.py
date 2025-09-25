@@ -26,7 +26,9 @@ model = RandomForestClassifier(n_estimators=300, random_state=42, class_weight= 
 cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)
 
-
+# model.fit(x, y_encode)
+# jb.dump(model, 'test/RF_model.pkl')
+# jb.dump(le, 'test/label_encoder.pkl')
 
 acc = accuracy_score(y_encode , y_pred)
 pre = precision_score(y_encode, y_pred, average='macro')
@@ -55,10 +57,7 @@ for i, class_name in enumerate(class_names):
     print(f"  False Positive (FP): {FP}")
     print(f"  False Negative (FN): {FN}")
     print(f"  True Negative  (TN): {TN}")
-
-# model.fit(x, y_encode)
-# jb.dump(model, 'test/RF_model.pkl')
-# jb.dump(le, 'test/label_encoder.pkl')
+    
 plt.figure(figsize=(10, 8))
 sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", 
             xticklabels=class_names, yticklabels=class_names)

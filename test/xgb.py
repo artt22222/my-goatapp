@@ -18,8 +18,9 @@ model = XGBClassifier(
     learning_rate= 0.5,
     max_depth= 6,
     n_estimators=300, 
-   # reg_alpha=1.0,
-    #reg_lambda=1.0,
+
+    reg_alpha=0,
+    reg_lambda=2.0,
     subsample=1.0,
     eval_metric = 'mlogloss'
     

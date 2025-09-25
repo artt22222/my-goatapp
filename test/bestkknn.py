@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.preprocessing import LabelEncoder
@@ -9,20 +9,21 @@ from sklearn.preprocessing import LabelEncoder
 df = pd.read_csv("test/datadisease.csv")
 df.fillna(0, inplace=True)
 
-X = df.drop("disease", axis=1)
-y = df["disease"]
+X = df.drop([x, y], axis=1)
+Y = df["location"]
 
 # Encode target labels
 le = LabelEncoder()
-y_encoded = le.fit_transform(y)
+y_encoded = le.fit_transform(Y)
 
 # === STEP 2: Define parameter grid ===
 param_grid = {
-    "n_estimators": [100, 200, 300],
-    "max_depth": [None, 10, 20],
-    "min_samples_split": [2, 4],
-    "min_samples_leaf": [1, 2],
-    "class_weight": [None, "balanced"]
+    "n_neighbors": [3, 5, 7, 9, 11],
+    "weights": ['uniform', 'distance'],
+    'metric': [],
+    'p':[1, 2],
+    'algorithm': ['auto', 'ball_tree', 'kd_tree'],
+    'leaf_size': [20, 30, 40]
 }
 
 # === STEP 3: Set up cross-validation ===
@@ -30,7 +31,7 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 # === STEP 4: Create GridSearchCV ===
 grid_search = GridSearchCV(
-    estimator=RandomForestClassifier(random_state=42),
+    estimator=KNeighborsClassifier(random_state=42),
     param_grid=param_grid,
     cv=cv,
     scoring="f1_macro",
@@ -50,7 +51,7 @@ for i, row in cv_results.iterrows():
     f1_macro = row['mean_test_score']
 
     # Train model again to check training accuracy
-    model = RandomForestClassifier(**params, random_state=42)
+    model = KNeighborsClassifier(**params, random_state=42)
     model.fit(X, y_encoded)
     y_pred_train = model.predict(X)
     acc = accuracy_score(y_encoded, y_pred_train)
@@ -64,9 +65,3 @@ for i, row in cv_results.iterrows():
 print("\n Best Parameters:")
 print(grid_search.best_params_)
 print(f" Best F1-score (macro avg): {grid_search.best_score_:.4f}")
-
-# # === STEP 8: Detailed report for the best model ===
-# print("\n=== Detailed classification report for best model (on training set) ===")
-# best_model = grid_search.best_estimator_
-# y_pred_best = best_model.predict(X)
-# print(classification_report(y_encoded, y_pred_best, target_names=le.classes_))

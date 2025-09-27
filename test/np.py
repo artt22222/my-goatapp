@@ -4,7 +4,7 @@ from sklearn.model_selection import cross_val_predict, StratifiedKFold
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score, precision_score, recall_score
 from sklearn.preprocessing import LabelEncoder 
 
-data=  pd.read_csv("test/datadisease.csv")
+data=  pd.read_csv("test/datadisease2.csv")
 data.fillna(0, inplace= True)
 
 x = data.drop(['disease'], axis=1)
@@ -12,7 +12,7 @@ y =data['disease']
 le = LabelEncoder()
 y_encode = le.fit_transform(y)
 
-model = MultinomialNB(alpha=1.0, fit_prior=False)
+model = MultinomialNB(alpha=2.0, fit_prior=True)
 
 cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)

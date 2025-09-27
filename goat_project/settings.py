@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'goat_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_goat',
         'USER': 'root',
-        'PASSWORD': '9artt',
+        'PASSWORD': 'phat',
         'HOST': 'localhost',
         'PORT': '3306',
     }

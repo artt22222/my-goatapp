@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, accuracy_score
 
-data = pd.read_csv("test/datadisease.csv")
+data = pd.read_csv("test/datadisease4.csv")
 data.fillna(0, inplace=True)
 
 x = data.drop("disease", axis=1)

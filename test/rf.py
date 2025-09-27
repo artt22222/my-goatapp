@@ -15,7 +15,7 @@ from sklearn.metrics import (
 # =======================
 # 1) Load & preprocess data
 # =======================
-data = pd.read_csv("datadisease4.csv")
+data = pd.read_csv("datadisease5.csv")
 data.fillna(0, inplace=True)
 
 # Features & Labels
@@ -42,7 +42,7 @@ model = RandomForestClassifier(
     min_samples_split=4
 )
 
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv = StratifiedKFold(n_splits=8, shuffle=True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)
 
 # =======================
@@ -113,8 +113,8 @@ plt.show()
 print("\nTraining final model on all data...")
 model.fit(x, y_encode)
 
-jb.dump(model, "modelRf.pkl")
-jb.dump(le, "newlabel_encoder.pkl")
-jb.dump(feature_names, "feature_names.pkl")
+jb.dump(model, "model_Rf5.pkl")
+jb.dump(le, "label_encoder5.pkl")
+jb.dump(feature_names, "feature_names5.pkl")
 
 print("✅ Model, encoder, and feature names saved successfully!")

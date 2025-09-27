@@ -16,9 +16,9 @@ def diagnosis(request):
             symptoms = request.POST.getlist('symptoms[]')
             print("อาการที่รับจากผู้ใช้:", symptoms)
 
-            model = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'modelRf.pkl'))
-            label_encoder = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'newlabel_encoder.pkl'))
-            feature_names = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'feature_names.pkl'))
+            model = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'model_Rf5.pkl'))
+            label_encoder = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'label_encoder5.pkl'))
+            feature_names = joblib.load(os.path.join(settings.BASE_DIR, 'test', 'feature_names5.pkl'))
 
             symptoms_vector = [1 if symptom in symptoms else 0 for symptom in feature_names]
             print("เวกเตอร์ที่ส่งเข้าโมเดล:", symptoms_vector)
@@ -30,17 +30,35 @@ def diagnosis(request):
             # zip + sort
             zipped = sorted(zip(class_labels, proba * 100), key=lambda x: x[1], reverse=True)
 
-            # เอา top3
-            top3 = zipped[:3]
-            other_list = zipped[3:]
+            # แยกตัวที่ >= 5% กับ < 5%
+            kept = [(label, p) for label, p in zipped if p >= 5]
+            removed = [(label, p) for label, p in zipped if p < 5]
+
+            removed_sum = sum(p for _, p in removed)
+
+            # เอา top3 จาก kept
+            top3 = kept[:3]
+            other_list = kept[3:]
+
+            # ถ้ามี removed_sum ก็ redistribute เข้า top3
+            if top3 and removed_sum > 0:
+                total_top3 = sum(p for _, p in top3)
+                redistributed = []
+                for label, p in top3:
+                    # คำนวณสัดส่วนใหม่
+                    extra = (p / total_top3) * removed_sum
+                    redistributed.append((label, p + extra))
+                top3 = redistributed
 
             # รวมเปอร์เซ็นต์ที่เหลือทั้งหมด
             other_sum = sum(p for _, p in other_list)
             final_result = top3 + [("อื่นๆ", other_sum)]
 
-            # normalize รวม 100%
+            # normalize ให้รวม 100%
             total_sum = sum(p for _, p in final_result)
             final_result = [(label, round(p / total_sum * 100, 2)) for label, p in final_result]
+            print("ผลลัพธ์สุดท้าย:", final_result)
+
 
             # แผนที่ชื่อโรค
             disease_name_map = {

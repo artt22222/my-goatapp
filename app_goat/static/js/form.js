@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.querySelector("form"); 
-    const submitBtn = document.querySelector(".submit-btn"); 
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const submitBtn = document.querySelector(".submit-btn");
     const checkboxes = document.querySelectorAll('input[name="symptoms[]"]');
     const summaryBox = document.getElementById("summary-box");
     const selectedList = document.getElementById("selected-symptoms");
@@ -11,13 +11,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateSummary() {
         selectedList.innerHTML = "";
-        const selected = [...checkboxes].filter(cb => cb.checked).map(cb => cb.value);
+        const selected = [...checkboxes].filter(cb => cb.checked);
 
         if (selected.length > 0) {
             summaryBox.style.display = "block";
-            selected.forEach(symptom => {
+
+            selected.forEach(cb => {
+                // ดึงข้อความจาก label ที่ผูกกับ checkbox
+                const label = document.querySelector(`label[for="${cb.id}"]`);
+                const symptomText = label ? label.textContent : cb.value;
+
                 const li = document.createElement("li");
-                li.textContent = symptom;
+                li.textContent = symptomText;
                 selectedList.appendChild(li);
             });
         } else {

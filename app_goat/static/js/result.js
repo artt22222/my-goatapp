@@ -12,11 +12,7 @@
             });
         });
 
-        // Show more info function
-        function showMoreInfo(diseaseName) {
-            alert(`แสดงข้อมูลเพิ่มเติมเกี่ยวกับ ${diseaseName}`);
-            // You can replace this with actual navigation or modal logic
-        }
+     
 
         // Add click animations to cards
         document.querySelectorAll('.disease-card').forEach(card => {
@@ -30,7 +26,4 @@
             });
         });
 
-        function toggleOthers() {
-        const div = document.getElementById("others");
-        div.style.display = div.style.display === "none" ? "block" : "none";
-}
+        

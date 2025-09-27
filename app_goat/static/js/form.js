@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form"); 
+    const submitBtn = document.querySelector(".submit-btn"); 
     const checkboxes = document.querySelectorAll('input[name="symptoms[]"]');
     const summaryBox = document.getElementById("summary-box");
     const selectedList = document.getElementById("selected-symptoms");
@@ -22,4 +24,16 @@ document.addEventListener("DOMContentLoaded", function() {
             summaryBox.style.display = "none";
         }
     }
+
+    form.addEventListener("submit", function (e) {
+        const selected = document.querySelectorAll("input[name='symptoms[]']:checked");
+        if (selected.length < 3) {
+            e.preventDefault();
+            submitBtn.textContent = "⚠ เลือกอย่างน้อย 3 อาการ";
+            submitBtn.style.backgroundColor = "red";
+        } else {
+            submitBtn.textContent = "🔍 ส่งข้อมูลวินิจฉัย";
+            submitBtn.style.backgroundColor = "green";
+        }
+    });
 });

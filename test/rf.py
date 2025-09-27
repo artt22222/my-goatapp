@@ -13,7 +13,7 @@ import seaborn as sns
 
 
 
-data = pd.read_csv("test/datadisease.csv")
+data = pd.read_csv("test/datadisease4.csv")
 data.fillna(0, inplace=True)
 
 x = data.drop(['disease'], axis=1).values
@@ -21,14 +21,12 @@ le = LabelEncoder()
 y = data['disease']
 y_encode = le.fit_transform(y)
 
-model = RandomForestClassifier(n_estimators=300, random_state=42, class_weight= 'balanced', max_depth=20, min_samples_leaf=1, min_samples_split= 4)
+model = RandomForestClassifier(n_estimators=200, random_state=42, class_weight= 'balanced', max_depth=None, min_samples_leaf=1, min_samples_split= 2)
 
-cv = StratifiedKFold(n_splits=5, shuffle= True, random_state=42)
+cv = StratifiedKFold(n_splits=10, shuffle= True, random_state=42)
 y_pred = cross_val_predict(model, x, y_encode, cv=cv)
 
-# model.fit(x, y_encode)
-# jb.dump(model, 'test/RF_model.pkl')
-# jb.dump(le, 'test/label_encoder.pkl')
+
 
 acc = accuracy_score(y_encode , y_pred)
 pre = precision_score(y_encode, y_pred, average='macro')
@@ -103,4 +101,6 @@ for i, container in enumerate(ax.containers):
 
 plt.show()
 
-
+# model.fit(x, y_encode)
+# jb.dump(model, 'test/RF_model.pkl')
+# jb.dump(le, 'test/label_encoder.pkl')

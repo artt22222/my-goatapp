@@ -31,8 +31,8 @@ def diagnosis(request):
             zipped = sorted(zip(class_labels, proba * 100), key=lambda x: x[1], reverse=True)
 
             # แยกตัวที่ >= 5% กับ < 5%
-            kept = [(label, p) for label, p in zipped if p >= 5]
-            removed = [(label, p) for label, p in zipped if p < 5]
+            kept = [(label, p) for label, p in zipped if p >= 7]
+            removed = [(label, p) for label, p in zipped if p < 7]
 
             removed_sum = sum(p for _, p in removed)
 

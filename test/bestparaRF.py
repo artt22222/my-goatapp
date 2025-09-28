@@ -6,7 +6,7 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.preprocessing import LabelEncoder
 
 # === STEP 1: Load dataset ===
-df = pd.read_csv("test/datadisease4.csv")
+df = pd.read_csv("test/datadisease6.csv")
 df.fillna(0, inplace=True)
 
 X = df.drop("disease", axis=1)
@@ -26,7 +26,7 @@ param_grid = {
 }
 
 # === STEP 3: Set up cross-validation ===
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv = StratifiedKFold(n_splits=8, shuffle=True, random_state=42)
 
 # === STEP 4: Create GridSearchCV ===
 grid_search = GridSearchCV(

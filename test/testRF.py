@@ -1,8 +1,8 @@
 import joblib as jb 
 import numpy as np
 
-model = jb.load("modelRf.pkl")
-le = jb.load("newlabel_encoder.pkl")
+model = jb.load("model_Rf5.pkl")
+le = jb.load("label_encoder5.pkl")
 
 thai_questions = [
     "แพะซึมหรือไม่?", "แพะเบื่ออาหารหรือไม่?", "มีไข้หรือไม่?", "ผอมลงรวดเร็วหรือไม่?",
